@@ -1,102 +1,22 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+// import Image from 'next/image'
+// import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+import Movie from "./Movie"
 
-export default function Home() {
+// const inter = Inter({ subsets: ['latin'] })
+
+
+export default async function Home() {
+  const data = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}`)
+  const films = await data.json()
+
   return (
     <main className="">
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
-     <h1>1</h1>
+      <article className="grid gap-16 grid-cols-fluid">
+        {films.results.map(movie => (
+          <Movie key={movie.id} id={movie.id} poster_path={movie.poster_path} release_date={movie.release_date}/>
+        ))}
+      </article>
     </main>
   )
 }
