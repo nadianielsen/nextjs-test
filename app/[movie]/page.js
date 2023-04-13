@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { FaCheckCircle } from "react-icons/fa"
 
 export async function generateStatic() {
     const data = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}`)
@@ -23,14 +24,20 @@ const minutes = res.runtime % 60;
     return (
         <article>
             <div>
-                <div className="w-full h-[35rem] sm:h-[30rem] relative bg-gradient-to-b from-transparent to-black">
+                <div className="w-full h-[35rem] sm:h-[40rem] relative bg-gradient-to-b from-transparent to-black">
                     <Image className="absolute w-full h-full object-cover -z-10" src={imagePath + res.backdrop_path} width={1000} height={1000} priority/>
                 </div>
-                <h2 className="text-2xl">{res.title}</h2>
-                <h2 className="text-lg">{res.release_date}</h2>
-                <h2>Runtime: {hours + "h" + minutes + "min"}</h2>
-                <h2 className="bg-green-600 inline-block my-2 py-2 px-4 rounded-md ">{res.status}</h2>
-                <p>{res.overview}</p>
+                <article className="px-14 sm:px-4">
+                    <div className="relative bottom-14">
+                        <h2 className="text-2xl font-semibold">{res.title}</h2>
+                    </div>
+                    <div className="flex relative bottom-5 gap-10 text-center">
+                        <h2 className="font-semibold flex gap-1">{res.status} <FaCheckCircle className="mt-1 text-green-500"/></h2>
+                        <h2 className="">{res.release_date}</h2>
+                        <h2 className="">Runtime: {hours + "h" + minutes + "min"}</h2>
+                    </div>
+                    <p>{res.overview}</p>
+                </article>
             </div>
         </article>
     )
