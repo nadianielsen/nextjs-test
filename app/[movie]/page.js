@@ -15,8 +15,9 @@ export default async function MovieDetail({ params }) {
 const { movie } = params
 const imagePath = "http://image.tmdb.org/t/p/original"
                                                                                                      //next and revalidate stands for how quick or slow the fetch of the things the page will be when you click the link
-const data = await fetch(`https://api.themoviedb.org/3/movie/${movie}?api_key=${process.env.API_KEY}`, { next: {revalidate: 10}})  
+const data = await fetch(`https://api.themoviedb.org/3/movie/${movie}?api_key=${process.env.API_KEY}`, { next: {revalidate: 0}})  
 const res = await data.json()
+
 
 const hours = Math.floor(res.runtime / 60)
 const minutes = res.runtime % 60;
@@ -25,7 +26,7 @@ const minutes = res.runtime % 60;
         <article>
             <div>
                 <div className="w-full h-[35rem] sm:h-[40rem] relative bg-gradient-to-b from-transparent to-black/95">
-                    <Image className="absolute w-full h-full object-cover -z-10 bg-blend-lighten" src={imagePath + res.backdrop_path} width={1000} height={1000} priority/>
+                    <Image className="absolute w-full h-full object-cover -z-10 bg-blend-lighten" src={imagePath + res.backdrop_path} width={1000} height={1000} priority alt={res.title}/>
                 </div>
                 <article className="px-14 sm:px-4">
                     <div className="relative bottom-14">
@@ -35,9 +36,11 @@ const minutes = res.runtime % 60;
                         <h2 className="font-semibold flex gap-1">{res.status} <FaCheckCircle className="mt-1 text-green-500"/></h2>
                         <h2 className="">{res.release_date}</h2>
                         <h2 className="">{hours + "h" + minutes + "min"}</h2>
-                        <button className="bg-red-600 hidden p-2 sm:flex gap-x-2 items-center rounded sm:relative sm:bottom-1.5">Play Trailer <FaPlay className="mt-1 text-sm"/> </button>
+                        <button className="bg-red-600 hidden p-2 sm:flex gap-x-2 items-center rounded sm:relative sm:bottom-2">Play Trailer <FaPlay className="mt-1 text-sm"/> </button>
                     </div>
                     <p className="md:w-[50%]">{res.overview}</p>
+                    <div>
+                    </div>
                 </article>
             </div>
         </article>
