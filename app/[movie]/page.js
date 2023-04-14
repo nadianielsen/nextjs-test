@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { FaCheckCircle } from "react-icons/fa"
+import { FaCheckCircle , FaPlay} from "react-icons/fa"
 
 export async function generateStatic() {
     const data = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}`)
@@ -24,19 +24,20 @@ const minutes = res.runtime % 60;
     return (
         <article>
             <div>
-                <div className="w-full h-[35rem] sm:h-[40rem] relative bg-gradient-to-b from-transparent to-black">
-                    <Image className="absolute w-full h-full object-cover -z-10" src={imagePath + res.backdrop_path} width={1000} height={1000} priority/>
+                <div className="w-full h-[35rem] sm:h-[40rem] relative bg-gradient-to-b from-transparent to-black/95">
+                    <Image className="absolute w-full h-full object-cover -z-10 bg-blend-lighten" src={imagePath + res.backdrop_path} width={1000} height={1000} priority/>
                 </div>
                 <article className="px-14 sm:px-4">
                     <div className="relative bottom-14">
-                        <h2 className="text-2xl font-semibold">{res.title}</h2>
+                        <h2 className="text-3xl font-semibold">{res.title}</h2>
                     </div>
-                    <div className="flex relative bottom-5 gap-10 text-center">
+                    <div className="flex relative bottom-5 gap-10 ">
                         <h2 className="font-semibold flex gap-1">{res.status} <FaCheckCircle className="mt-1 text-green-500"/></h2>
                         <h2 className="">{res.release_date}</h2>
-                        <h2 className="">Runtime: {hours + "h" + minutes + "min"}</h2>
+                        <h2 className="">{hours + "h" + minutes + "min"}</h2>
+                        <button className="bg-red-600 hidden p-2 sm:flex gap-x-2 items-center rounded sm:relative sm:bottom-1.5">Play Trailer <FaPlay className="mt-1 text-sm"/> </button>
                     </div>
-                    <p>{res.overview}</p>
+                    <p className="md:w-[50%]">{res.overview}</p>
                 </article>
             </div>
         </article>
