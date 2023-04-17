@@ -17,7 +17,7 @@ export default async function Home() {
       <h2 className='py-5 flex gap-x-2'>Popular Movies<FiArrowRight className='text-xl mt-0.5'/></h2>
       <article className="grid gap-16 grid-cols-fluid">
         {films.results.map(movie => (
-          <Movie key={movie.id} id={movie.id} poster_path={movie.poster_path} vote_average={movie.vote_average}/>
+          <Movie key={movie.id} id={movie.id} poster_path={movie.poster_path} />
         ))}
       </article>
     </article>
