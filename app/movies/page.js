@@ -9,9 +9,10 @@ export default function Movies() {
     const month = date.getMonth()
 
     return (
-       <div>
+       <article>
         <FetchComponent url={`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.API_KEY}`} headline={"Upcoming Movies"}/>
-        <FetchComponent url={`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.API_KEY}`} headline={`Top Rated Movies This ${monthNames[month]}`}/>
-       </div>
+        <FetchComponent url={`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.API_KEY}`} headline={`Top Rated Movies This ${monthNames[month]}`}/>
+        <FetchComponent url={`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.API_KEY}`} headline={`Now Playing`}/>
+       </article>
     )
 }
