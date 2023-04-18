@@ -10,8 +10,8 @@ const FetchComponent = async ({url, headline}) => {
     const res = await data.json()
 
     return (
-    <article className={`${poppins.className} mx-5`}>
-            <h2 className='py-5 flex gap-x-2'>{headline}<FiArrowRight className='text-xl mt-0.5'/></h2>
+    <article className={`${poppins.className} mx-5 my-2`}>
+            <h2 className='py-5 flex gap-x-2 text-xl'>{headline}<FiArrowRight className='text-xl mt-1'/></h2>
             <article className="grid gap-16 grid-cols-fluid">
                 {res.results.map(movie => (
                     <Movie key={movie.id} id={movie.id} poster_path={movie.poster_path} />
