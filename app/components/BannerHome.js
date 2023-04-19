@@ -4,9 +4,10 @@ import axios from "axios";
 import Bannertext from "./BannerText";
 import Image from "next/image";
 import BannerLoading from "./BannerLoading";
+import Link from "next/link";
 
 
-const BannerHome = () => {
+const BannerHome = ({id}) => {
     const [featured, setFeatured] = useState();
     const [backdrop, setBackdrop] = useState();
     const [reloadImage, setReloadImage] = useState(true);
@@ -46,10 +47,12 @@ const BannerHome = () => {
 
 
     return loading ? <BannerLoading /> : ( 
-        <div className="bg-transparent w-full h-[80vh] flex justify-start items-end relative aspect-video bg-gradient-to-bl from-transparent to-black/95">
-        <Bannertext />
-        <Image src={`https://image.tmdb.org/t/p/original${backdrop?.file_path}`} alt="Banner with different movies" className="absolute w-full h-full object-cover -z-10" width={1000} height={1000}/>   
-    </div>
+        <Link href={`/${featured.id}`} >
+            <div className="bg-transparent w-full sm:w-full sm:h-[80vh] flex justify-start items-end relative aspect-video bg-gradient-to-bl from-transparent to-black/95">
+                <Bannertext />
+                <Image src={`https://image.tmdb.org/t/p/original${backdrop?.file_path}`} alt="Banner with different movies" className="absolute w-full h-full object-cover -z-10" width={1000} height={1000}/>   
+            </div>
+        </Link>
      );
 }
  
