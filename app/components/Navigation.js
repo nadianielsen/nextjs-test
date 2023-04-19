@@ -15,9 +15,6 @@ const montserrat = Montserrat({
 })
 
 const Navigation = () => {
-
-    const router = useRouter;
-    const currentRoute = router.pathname;
       
     const [isOpen, setIsOpen] = useState(false);
 
