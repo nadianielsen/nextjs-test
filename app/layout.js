@@ -3,7 +3,6 @@ import Header from './components/Header'
 import './globals.css'
 
 
-
 // meta - head, i think you can call it 
 export const metadata = {
   title: 'Next js 13 - Self Study',
