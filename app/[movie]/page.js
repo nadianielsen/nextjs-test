@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { FaCheckCircle , FaPlay, FaStar} from "react-icons/fa"
 
-export async function generateStatic() {
+export async function generateStaticParams() {
     const data = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}`)
     const res = await data.json()
     return res.results.map((movie) => ({
@@ -12,8 +12,10 @@ export async function generateStatic() {
 // making them static, so when the page is live to the public, it´ll render them out fast - premade - prerendered - i think that is what it means or see the video again to understand!!
 
 export default async function MovieDetail({ params }) {
+    // throw new Error("failed to load data")
 const { movie } = params
 const imagePath = "http://image.tmdb.org/t/p/original"
+
                                                                                                      //next and revalidate stands for how quick or slow the fetch of the things the page will be when you click the link
 const data = await fetch(`https://api.themoviedb.org/3/movie/${movie}?api_key=${process.env.API_KEY}`, { next: {revalidate: 0}})  
 const res = await data.json()
