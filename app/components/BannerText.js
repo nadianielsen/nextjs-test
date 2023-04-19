@@ -36,7 +36,7 @@ const letter = {
   },
 }
     return ( 
-        <motion.h2 initial="hidden" animate="visible" variants={sentence} className={`${montserrat.className} w-[50%] sm:w-[30%] sm:text-3xl text-white p-5 font-semibold`}> 
+        <motion.h2 initial="hidden" animate="visible" variants={sentence} className={`${montserrat.className} w-[50%] sm:text-xl md:w-[40%] md:text-2xl lg:w-[35%] text-white px-5 py-3 sm:p-5 font-semibold`}> 
             {line1.split("").map((char, index) => (
                 <motion.span key={char + "-" + index} variants={letter}>{char}</motion.span>
             ))}

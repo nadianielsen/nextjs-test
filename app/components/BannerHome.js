@@ -40,11 +40,6 @@ const BannerHome = ({id}) => {
         }
     }, [featured]);
 
-    // const {id} = useParams();
-
-    // const {data: movie, error} = useAxios(`https://api.themoviedb.org/3/movie/${id}?api_key=75f15351c6119a96302b866663e596b0&language=en-US`)
-
-
 
     return loading ? <BannerLoading /> : ( 
         <Link href={`/${featured.id}`} >
