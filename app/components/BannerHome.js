@@ -43,7 +43,7 @@ const BannerHome = ({id}) => {
 
     return loading ? <BannerLoading /> : ( 
         <Link href={`/${featured.id}`} >
-            <div className="bg-transparent w-full sm:w-full sm:h-[80vh] flex justify-start items-end relative aspect-video bg-gradient-to-bl from-transparent to-black/95">
+            <div className="bg-transparent w-full sm:w-full sm:h-[84vh] flex justify-start items-end relative aspect-video bg-gradient-to-bl from-transparent to-black/95">
                 <Bannertext />
                 <Image src={`https://image.tmdb.org/t/p/original${backdrop?.file_path}`} alt="Banner with different movies" className="absolute w-full h-full object-cover -z-10" width={1000} height={1000}/>   
             </div>
