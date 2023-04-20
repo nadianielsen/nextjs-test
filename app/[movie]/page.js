@@ -45,8 +45,7 @@ const minutes = res.runtime % 60;
                         <h2 className="flex gap-x-2 sm:hidden"><FaStar className="text-yellow-400 mt-0.5 text-xl"/>{res.vote_average}</h2>
                         <button className="bg-red-600 p-2 flex gap-x-2 items-center rounded relative bottom-2 sm:hidden">Play Trailer <FaPlay className="mt-1 text-sm"/> </button>
                     </div>
-
-                    <p className="md:w-[50%]">{res.overview}</p>
+                    <p className="md:w-[50%]">{res.overview}</p>                    
                     <div>
                     </div>
                 </article>
