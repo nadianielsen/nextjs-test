@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { BiMenuAltRight } from "react-icons/bi"
 import { Montserrat } from "next/font/google"
+import { useRouter } from "next/router";
 
 const montserrat = Montserrat({
   weight: ["400", "700"],
@@ -14,7 +15,6 @@ const montserrat = Montserrat({
 })
 
 const Navigation = () => {
-
       
     const [isOpen, setIsOpen] = useState(false);
 

@@ -14,7 +14,7 @@ const Footer = () => {
                 <FaTwitter />
                 <FaInstagram />
             </article>
-            <article className="flex justify-center gap-x-12 pb-2 text-sm text-neutral-600">
+            <article className="grid grid-cols-2 gap-y-4 ml-28 sm:ml-0 sm:flex sm:justify-center sm:gap-x-12 pb-2 text-sm text-neutral-600">
                 <Link href="/about">About Us</Link>
                 <Link href="/faq">FAQ</Link>
                 <Link href="/terms&conditions">Terms & Conditions</Link>
