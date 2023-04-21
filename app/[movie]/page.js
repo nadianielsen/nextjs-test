@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { FaCheckCircle , FaPlay, FaStar} from "react-icons/fa"
 
 export async function generateStaticParams() {
@@ -12,12 +13,13 @@ export async function generateStaticParams() {
 // making them static, so when the page is live to the public, it´ll render them out fast - premade - prerendered - i think that is what it means or see the video again to understand!!
 
 export default async function MovieDetail({ params }) {
-    // throw new Error("failed to load data")
+  
+    // error js --> throw new Error("failed to load data")
+    
 const { movie } = params
 const imagePath = "http://image.tmdb.org/t/p/original"
-
                                                                                                      //next and revalidate stands for how quick or slow the fetch of the things the page will be when you click the link
-const data = await fetch(`https://api.themoviedb.org/3/movie/${movie}?api_key=${process.env.API_KEY}`, { next: {revalidate: 0}})  
+const data = await fetch(`https://api.themoviedb.org/3/movie/${movie}?api_key=${process.env.API_KEY}&append_to_response=videos`, { next: {revalidate: 0}})  
 const res = await data.json()
 
 
@@ -39,11 +41,11 @@ const minutes = res.runtime % 60;
                         <h2 className="">{res.release_date}</h2>
                         <h2 className="">{hours + "h" + minutes + "min"}</h2>
                         <h2 className="hidden sm:flex gap-x-2"><FaStar className="text-yellow-400 mt-0.5 text-xl"/>{res.vote_average}</h2>
-                        <button className="bg-red-600 hidden p-2 sm:flex gap-x-2 items-center rounded sm:relative sm:bottom-2">Play Trailer <FaPlay className="mt-1 text-sm"/> </button>
+                        <Link href={`/trailer/${movie}`} className="bg-red-600 hidden p-2 sm:flex gap-x-2 items-center rounded sm:relative sm:bottom-2">Play Trailer <FaPlay className="mt-1 text-sm"/> </Link>
                     </div>
                     <div className="flex gap-x-10">
                         <h2 className="flex gap-x-2 sm:hidden"><FaStar className="text-yellow-400 mt-0.5 text-xl"/>{res.vote_average}</h2>
-                        <button className="bg-red-600 p-2 flex gap-x-2 items-center rounded relative bottom-2 sm:hidden">Play Trailer <FaPlay className="mt-1 text-sm"/> </button>
+                        <Link href={`/trailer/${movie}`} className="bg-red-600 p-2 flex gap-x-2 items-center rounded relative bottom-2 sm:hidden">Play Trailer <FaPlay className="mt-1 text-sm"/> </Link>
                     </div>
                     <p className="md:w-[50%]">{res.overview}</p>                    
                     <div>
